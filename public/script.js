@@ -22,8 +22,8 @@ $('#login').on('click',function(){
     let pass=$('#pass').val();
   
     getOne(name, pass)
-    $('#exuser').value = "";
-    $('#pass').value ="";
+    $('#exuser').val("");
+    $('#pass').val("");
   })
 function getOne( name, pass){
     $.ajax({
