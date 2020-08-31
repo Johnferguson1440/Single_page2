@@ -26,7 +26,7 @@ $('#login').on('click',function(){
 function getOne( name, pass){
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/api/shop/'+name,
+        url: '/api/shop/'+name,
         connection: 'Keep-Alive',
         data:{'pass':pass},
         dataType: 'text',
