@@ -109,10 +109,12 @@ function update(id, list){
             data:{'name':name, 'pass': pass},
             dataType: 'text',
             success: function(data){
-                var parsed =JSON.parse(data);
-                
+                var parsed =JSON.parse(data);               
                 var id = parsed[0].id;
                 var list = parsed[0].list;
+                if(typeof parsed === "string"){
+                    alert(data);
+                }else{            
                 
                 $('#users').find('#list').remove();
                 $('#list').find("#update").remove();        
@@ -125,7 +127,7 @@ function update(id, list){
               
                         <input  type="button" class="update" value="SAVE LIST"></input></form>`);
                 
-            }
+            }}
         })
     }
 })

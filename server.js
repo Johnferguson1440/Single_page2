@@ -62,8 +62,7 @@ app.post('/api/shop', (req, res)=>{
     db.query('SELECT * FROM users WHERE name= $1', [req.body.name], (err, data)=>{        
         if(err){
             console.log(err);
-        }else if(data.rowCount === 0){
-            
+        }else if(data.rowCount === 0){            
             db.query('INSERT INTO users(name, pass) VALUES ($1, $2)', [req.body.name, req.body.pass], (err, data)=>{
                 if(err){
                     console.log(err);
