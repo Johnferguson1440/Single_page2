@@ -30,6 +30,7 @@ body,html{
   
 }
 #title{
+    margin: 0 auto;
     padding: 1em;
     position: relative; top: -55px;
     height: 200px;
