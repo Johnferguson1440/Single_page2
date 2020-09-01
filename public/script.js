@@ -111,7 +111,11 @@ function update(id, list){
             success: function(data){
                 var parsed =JSON.parse(data);               
                 var id = parsed[0].id;
+                if(parsed[0].list===null){
+                    var list = "Your list";
+                }else{
                 var list = parsed[0].list;
+                }
                 if(typeof parsed === "string"){
                     alert(data);
                 }else{            
