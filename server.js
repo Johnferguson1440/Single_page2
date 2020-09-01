@@ -17,6 +17,7 @@ app.use(express.static('public'));
 
 
 
+
 //get req for all users
 app.get('/api/users', (req, res)=>{
     db.query('SELECT * FROM users', (err, data)=>{

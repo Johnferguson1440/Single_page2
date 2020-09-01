@@ -60,10 +60,11 @@ function getOne( name, pass){
 $(".body").on('click','.update', function(){   
   
     let currentID= $('#list').attr("class");
-    let title = $('#list').val()
+    
     let list = $('#myTextArea').val();    
-    update(currentID, list, title)
-  })
+    
+    update(currentID, list)
+})
 
 function update(id, list, name){
     $.ajax({
@@ -76,18 +77,19 @@ function update(id, list, name){
             var parsed=JSON.parse(data)
             let list = parsed[0].list;
             let id =parsed[0].userID;
-            console.log(list);
             
-            $('#users').find('#list').remove();
+            
+            //$('#users').find('#list').remove();
             $('#list').find("#update").remove();
             
-                $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
+                //$('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
                 $('#list').append(`<form id="pholder">
                 <textarea id = "myTextArea"
                         rows = "30"
                         cols = "80">${list}</textarea>
               
                         <input  type="button" class="update" value="SAVE LIST"></input></form>`);
+            alert("List Saved!")
             }        
     })}
 
