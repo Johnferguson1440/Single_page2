@@ -50,7 +50,8 @@ body,html{
 }
 #users{
     position: relative; 
-    right: 17%;
+    right: 10%;
+    top: -5%;
     clear: both;
 
     margin: 0 auto;
