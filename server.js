@@ -66,6 +66,7 @@ app.post('/api/shop', (req, res)=>{
                         if(err){
                             console.log(err);
                         }else{
+                            console.log(data.rows)
                             userid= data.rows[0].id;
                             
                             db.query('INSERT INTO shop(list, userID) VALUES ($1,$2)', [req.body.list, userid], (err, data)=>{
