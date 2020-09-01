@@ -33,11 +33,15 @@ function getOne( name, pass){
         data:{'pass':pass},
         dataType: 'text',
         success: function(data){
+            
+
             var parsed=JSON.parse(data)
             let list = parsed[0].list;
             let id =parsed[0].id;
-            console.log(parsed);
             
+            if(typeof parsed === "string"){
+                alert(data);
+            }else{            
             
             $('#users').find('#list').remove();
             $('#list').find("#update").remove();
@@ -48,8 +52,8 @@ function getOne( name, pass){
                         rows = "30"
                         cols = "80">${list}</textarea>
               
-                        <input  type="button" class="update" value="Update List"></input></form>`);
-            }        
+                        <input  type="button" class="update" value="SAVE LIST"></input></form>`);
+        }}        
     })}
 
 //update users list
@@ -82,7 +86,7 @@ function update(id, list){
                         rows = "30"
                         cols = "80">${list}</textarea>
               </p>
-                                    <button id="update">Update list</button>`);
+                                    <button id="update">SAVE LIST</button>`);
             }        
     })}
 
@@ -104,18 +108,15 @@ function update(id, list){
             success: function(data){
                 
                 $('#users').find('#list').remove();
-                $('#list').find("#update").remove();
-               console.log(data)
-                
-                console.log(data[0].id);
+                $('#list').find("#update").remove();        
 
                 $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
                 $('#list').append(`<form id="pholder">
                 <textarea id = "myTextArea"
-                        rows = "30"
-                        cols = "80">${list}</textarea>
+                        rows = "50"
+                        cols = "60">${list}</textarea>
               
-                        <input  type="button" class="update" value="Update List"></input></form>`);
+                        <input  type="button" class="update" value="SAVE LIST"></input></form>`);
                 
             }
         })

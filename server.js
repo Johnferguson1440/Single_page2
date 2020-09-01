@@ -1,6 +1,6 @@
 //require dotenv for pass sec
-require('dotenv').config();
-const db = require('./db/db_configuration');
+//require('dotenv').config();
+//const db = require('./db/db_configuration');
 //require express
 const express = require('express');
 const app = express();
@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 const morgan = require('morgan');
 app.use(morgan("short"));
 app.use(express.static('public'));
+
+
 
 
 
@@ -43,7 +45,7 @@ app.post('/api/shop/:name', (req, res)=>{
 
                }})
         }else{
-            res.json("wrong password");
+            res.json("Wrong Password");
         }
     })
 })

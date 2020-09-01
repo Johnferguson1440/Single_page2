@@ -1,1 +1,72 @@
+body,html{
+    height: 100%;
+    background-size: cover;    
+    background-image: url(http://www.techsupportalert.com/files/images/techtreats/WPOTWBlackWood.jpg);
+    background-position: center;
+    background-repeat: repeat;
+    
+}
+
+
+
+#newuser{
+    position: relative; left: 20px; top: -80px;
+    float: left;
+    padding: 2em;
+    width: 200px;
+    height: 100px;
+    background-color: rgb(43, 235, 235);
+    border: 1px solid rgb(3, 1, 27);
+}
+#exist{
+    padding: 2em;
+    position: relative;  left:-20px; top: -80px;
+    float: right;
+    width: 200px;
+    height: 100px;
+    background-color: rgb(82, 215, 233);
+    border: 1px solid rgb(3, 1, 27);
+  
+}
+#title{
+    padding: 1em;
+    position: relative; top: -55px;
+    height: 200px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 50px;
+    text-align: center;
+}
+#users{
+    position: relative; left: -20px; top: -105px;
+    margin: 0 auto;
+    width: 200px;
+    height:300px;
+   
+    }
+#list{
+    padding: 1em;
+    position: relative; left: -350px; 
+    margin: 0 auto;
+    width: 900px;
+    height:300px;
+    font-size: 50px;
+    text-align: center;
+    color: rgb(227, 234, 243);
+    
+
+}
+#myTextArea{
+    background-color: rgb(133, 232, 245);
+    font-size: 20px;
+    color: rgb(3, 3, 71);
+}
+.update{
+    background-color: rgb(3, 3, 71);
+    color: rgb(82, 215, 233);
+    width: 300px;
+    height: 100px;
+    font-size: 30px;
+}
+
 
