@@ -35,7 +35,7 @@ app.post('/api/shop/:name', (req, res)=>{
     db.query('SELECT * FROM users WHERE name= $1', [name], (err, data)=>{
         id=data.rows[0].id
         if(err){
-                        console.log(err);
+            console.log(err);
         }else if(data.rows[0].pass === pass){
            db.query('SELECT * FROM shop WHERE userID=$1',[id], (err, data)=>{
                if(err){
