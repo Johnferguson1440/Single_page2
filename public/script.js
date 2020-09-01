@@ -60,11 +60,12 @@ function getOne( name, pass){
 $(".body").on('click','.update', function(){   
   
     let currentID= $('#list').attr("class");
+    let title = $('#list').val()
     let list = $('#myTextArea').val();    
-    update(currentID, list)
+    update(currentID, list, title)
   })
 
-function update(id, list){
+function update(id, list, name){
     $.ajax({
         type: 'PATCH',
         url: '/api/shop/'+id,
