@@ -1,6 +1,6 @@
 //require dotenv for pass sec
-//require('dotenv').config();
-//const db = require('./db/db_configuration');
+require('dotenv').config();
+const db = require('./db/db_configuration');
 //require express
 const express = require('express');
 const app = express();
