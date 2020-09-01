@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 //get req for all users
 app.get('/api/users', (req, res)=>{
-    pool.query('SELECT * FROM users', (err, data)=>{
+    db.query('SELECT * FROM users', (err, data)=>{
         if(err){
             console.log(err);
         }else{
@@ -28,7 +28,7 @@ app.post('/api/shop/:name', (req, res)=>{
     var name= req.params.name;
     var pass= req.body.pass;
     var id;
-    pool.query('SELECT * FROM users WHERE name= $1', [name], (err, data)=>{
+    db.query('SELECT * FROM users WHERE name= $1', [name], (err, data)=>{
                if(err){            
             console.log(err);
         }else if(data.rowCount===0){
@@ -36,7 +36,7 @@ app.post('/api/shop/:name', (req, res)=>{
         
         }else if(data.rows[0].pass === pass){
             id=data.rows[0].id;
-           pool.query('SELECT * FROM shop WHERE userID=$1',[id], (err, data)=>{
+           db.query('SELECT * FROM shop WHERE userID=$1',[id], (err, data)=>{
                if(err){
                    console.log(err);
                }else{
@@ -52,25 +52,25 @@ app.post('/api/shop/:name', (req, res)=>{
 //post req for shopping list and user
 app.post('/api/shop', (req, res)=>{
     var userid= 0;
-    pool.query('SELECT * FROM users WHERE name= $1', [req.body.name], (err, data)=>{        
+    db.query('SELECT * FROM users WHERE name= $1', [req.body.name], (err, data)=>{        
         if(err){
             console.log(err);
         }else if(data.rowCount === 0){            
-            pool.query('INSERT INTO users(name, pass) VALUES ($1, $2)', [req.body.name, req.body.pass], (err, data)=>{
+            db.query('INSERT INTO users(name, pass) VALUES ($1, $2)', [req.body.name, req.body.pass], (err, data)=>{
                 if(err){
                     console.log(err);
                 }else{  
-                    pool.query('SELECT * FROM users WHERE name= $1', [req.body.name], (err, data)=>{
+                    db.query('SELECT * FROM users WHERE name= $1', [req.body.name], (err, data)=>{
                         if(err){
                             console.log(err);
                         }else{
                             userid= data.rows[0].id;
                             
-                            pool.query('INSERT INTO shop(list, userID) VALUES ($1,$2)', [req.body.list, userid], (err, data)=>{
+                            db.query('INSERT INTO shop(list, userID) VALUES ($1,$2)', [req.body.list, userid], (err, data)=>{
                                 if(err){
                                     console.log(err);
                                 }else{
-                                    pool.query('SELECT * FROM shop WHERE userID=$1',[userid], (err,data)=>{
+                                    db.query('SELECT * FROM shop WHERE userID=$1',[userid], (err,data)=>{
                                         if(err){
                                             console.log(err);
                                         }else{                                       
@@ -95,12 +95,12 @@ app.patch('/api/shop/:id', (req, res)=>{
     var id= Number.parseInt(req.params.id);
     var list = req.body.list;
     
-    pool.query('UPDATE shop SET list=$1 WHERE ID=$2', [list, id], (err, data) =>{
+    db.query('UPDATE shop SET list=$1 WHERE ID=$2', [list, id], (err, data) =>{
         if(err){
             
             console.log(err);
         }else{
-            pool.query('SELECT * FROM shop WHERE userID=$1', [id], (err, data)=>{
+            db.query('SELECT * FROM shop WHERE userID=$1', [id], (err, data)=>{
                 if(err){
                     console.log(err);
                 }else{
@@ -114,7 +114,7 @@ app.patch('/api/shop/:id', (req, res)=>{
 //delete user and list
 app.delete('/api/users/:id', (req, res)=>{
     var id= Number.parseInt(req.params.id);
-    pool.query('DELETE FROM users WHERE ID= $1', [id], (err, data)=>{
+    db.query('DELETE FROM users WHERE ID= $1', [id], (err, data)=>{
         if(err){
             console.log(err);
         }else{
