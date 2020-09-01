@@ -80,7 +80,7 @@ function update(id, list){
             
             
             //$('#users').find('#list').remove();
-            $('#list').find("#update").remove();
+            $('#list').find("#pholder").remove();
             
                 //$('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
                 $('#list').append(`<form id="pholder">
