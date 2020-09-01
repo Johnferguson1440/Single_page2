@@ -115,21 +115,21 @@ function update(id, list){
                     var list = "Your list";
                 }else{
                 var list = parsed[0].list;
-                }
+            }
                 if(typeof parsed === "string"){
                     alert(data);
                 }else{            
-                
-                $('#users').find('#list').remove();
-                $('#list').find("#update").remove();        
-
-                $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
-                $('#list').append(`<form id="pholder">
-                <textarea id = "myTextArea"
-                        rows = "30"
-                        cols = "80">${list}</textarea>
-              
-                        <input  type="button" class="update" value="SAVE LIST"></input></form>`);
+                    
+                    $('#users').find('#list').remove();
+                    $('#list').find("#update").remove();        
+                    
+                    $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
+                    $('#list').append(`<form id="pholder">
+                    <textarea id = "myTextArea"
+                    rows = "30"
+                    cols = "80">${list}</textarea>
+                    
+                    <input  type="button" class="update" value="SAVE LIST"></input></form>`);
                 
             }}
         })
