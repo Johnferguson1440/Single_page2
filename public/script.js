@@ -81,12 +81,12 @@ function update(id, list){
             $('#list').find("#update").remove();
             
                 $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
-                $('#list').append(`<p><label></label>
+                $('#list').append(`<form id="pholder">
                 <textarea id = "myTextArea"
                         rows = "30"
                         cols = "80">${list}</textarea>
-              </p>
-                                    <button id="update">SAVE LIST</button>`);
+              
+                        <input  type="button" class="update" value="SAVE LIST"></input></form>`);
             }        
     })}
 
@@ -113,8 +113,8 @@ function update(id, list){
                 $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
                 $('#list').append(`<form id="pholder">
                 <textarea id = "myTextArea"
-                        rows = "50"
-                        cols = "60">${list}</textarea>
+                        rows = "30"
+                        cols = "80">${list}</textarea>
               
                         <input  type="button" class="update" value="SAVE LIST"></input></form>`);
                 
