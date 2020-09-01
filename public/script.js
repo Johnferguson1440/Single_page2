@@ -53,12 +53,10 @@ function getOne( name, pass){
     })}
 
 //update users list
-$(".body").on('click','.update', function(){
-   
-  console.log("clicked");
+$(".body").on('click','.update', function(){   
+  
     let currentID= $('#list').attr("class");
-    let list = $('#myTextArea').val();
-    console.log(list)
+    let list = $('#myTextArea').val();    
     update(currentID, list)
   })
 
@@ -92,6 +90,8 @@ function update(id, list){
         let name= $('#adduser').val();
         let pass=$('#addpass').val();
         postUser(name, pass);
+        $('#adduser').val("");
+        $('#addpass').val("");
     })
 
     function postUser(name, pass){
