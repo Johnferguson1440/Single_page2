@@ -66,7 +66,7 @@ $(".body").on('click','.update', function(){
     update(currentID, list)
 })
 
-function update(id, list, name){
+function update(id, list){
     $.ajax({
         type: 'PATCH',
         url: '/api/shop/'+id,
@@ -109,6 +109,10 @@ function update(id, list, name){
             data:{'name':name, 'pass': pass},
             dataType: 'text',
             success: function(data){
+                var parsed =JSON.parse(data);
+                
+                var id = parsed[0].id;
+                var list = parsed[0].list;
                 
                 $('#users').find('#list').remove();
                 $('#list').find("#update").remove();        

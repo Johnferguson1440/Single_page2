@@ -18,6 +18,7 @@ app.use(express.static('public'));
 
 
 
+
 //get req for all users
 app.get('/api/users', (req, res)=>{
     db.query('SELECT * FROM users', (err, data)=>{
@@ -34,10 +35,14 @@ app.post('/api/shop/:name', (req, res)=>{
     var pass= req.body.pass;
     var id;
     db.query('SELECT * FROM users WHERE name= $1', [name], (err, data)=>{
-        id=data.rows[0].id
-        if(err){
+        console.log(data);
+        if(err){            
             console.log(err);
+        }else if(data.rowCount===0){
+            res.json("User Doesn't Exist")
+        
         }else if(data.rows[0].pass === pass){
+            id=data.rows[0].id;
            db.query('SELECT * FROM shop WHERE userID=$1',[id], (err, data)=>{
                if(err){
                    console.log(err);
@@ -67,7 +72,6 @@ app.post('/api/shop', (req, res)=>{
                         if(err){
                             console.log(err);
                         }else{
-                            console.log(data.rows)
                             userid= data.rows[0].id;
                             
                             db.query('INSERT INTO shop(list, userID) VALUES ($1,$2)', [req.body.list, userid], (err, data)=>{
@@ -87,7 +91,7 @@ app.post('/api/shop', (req, res)=>{
                         })                
                     }})
     }else{
-        res.json(req.body.name +" user already exist");
+        res.json(req.body.name +" User already exist!");
     }
 })})
 
@@ -101,6 +105,7 @@ app.patch('/api/shop/:id', (req, res)=>{
     
     db.query('UPDATE shop SET list=$1 WHERE ID=$2', [list, id], (err, data) =>{
         if(err){
+            
             console.log(err);
         }else{
             db.query('SELECT * FROM shop WHERE userID=$1', [id], (err, data)=>{
