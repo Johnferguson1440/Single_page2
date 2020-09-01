@@ -84,6 +84,7 @@ body,html{
     font-size: 30px;
 }
 #container{
+    display: flex;
     flex-direction: row;
     width:100%;
 }
