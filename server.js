@@ -1,6 +1,6 @@
 //require dotenv for pass sec
-//require('dotenv').config();
-//const db = require('./db/db_configuration');
+require('dotenv').config();
+const db = require('./db/db_configuration');
 //require express
 const express = require('express');
 const app = express();
@@ -12,14 +12,7 @@ app.use(bodyParser.json());
 const morgan = require('morgan');
 app.use(morgan("short"));
 app.use(express.static('public'));
-const {Pool} = require('pg');
-const pool = new Pool({
-    user:'postgres',
-    host:'localhost', /*verify with command " \conninfo" in psql repl*/
-    database: 'shopping',
-    password: 'JwF@4434124',
-    port: 5432
-})
+
 //get req for all users
 app.get('/api/users', (req, res)=>{
     pool.query('SELECT * FROM users', (err, data)=>{
