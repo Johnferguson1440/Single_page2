@@ -98,10 +98,10 @@ body,html{
 .username{
     font-style: bold;
     font-size: 2em;
-    color:  rgb(58, 214, 97);
+    color:  black
 }
 .password{
     font-style: bold;
     font-size: 2em;
-    color: rgb(58, 214, 97);
+    color: black
 }
