@@ -65,7 +65,7 @@ body,html{
     color: rgb(58, 214, 97);
 }
 .update{
-    background-color:rgb(243, 146, 19);
+    background-color:rgb(212, 129, 20);
     color:rgb(110, 241, 116);
     width: 300px;
     height: 100px;
@@ -92,14 +92,16 @@ body,html{
     width: 100px;
     height: 30px;
     background-color: rgb(7, 148, 54);
-    color: rgb(172, 15, 15);
+    color: white
 }
 
 .username{
+    font-style: bold;
     font-size: 2em;
-    color:  rgb(77, 224, 51);
+    color:  rgb(58, 214, 97);
 }
 .password{
+    font-style: bold;
     font-size: 2em;
-    color: rgb(77, 224, 51);
+    color: rgb(58, 214, 97);
 }
