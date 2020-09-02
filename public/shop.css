@@ -17,7 +17,7 @@ body,html{
     
     width: 350px;
     height: 100px;
-    background-color: rgb(243, 146, 19);
+    background-color: darkorange;
     border: 1px solid rgb(3, 1, 27);
     color: white;
       
@@ -92,14 +92,14 @@ body,html{
     width: 100px;
     height: 30px;
     background-color: rgb(7, 148, 54);
-    color: rgb(172, 50, 50);
+    color: rgb(172, 15, 15);
 }
 
 .username{
     font-size: 2em;
-    color:  rgb(19, 100, 39);
+    color:  rgb(77, 224, 51);
 }
 .password{
     font-size: 2em;
-    color:  rgb(19, 100, 39);
+    color: rgb(77, 224, 51);
 }
