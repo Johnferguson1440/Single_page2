@@ -78,8 +78,8 @@ $(".body").on('click','.update', function(){
         
     });  
     let strg= list.join();
-console.log(strg);
-    //update(currentID, strg);
+
+    update(currentID, strg);
 })
 
 function update(id, list){
