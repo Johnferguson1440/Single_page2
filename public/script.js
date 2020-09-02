@@ -46,7 +46,7 @@ function getOne( name, pass){
             $('#users').find('#list').remove();
             $('#list').find("#update").remove();
 
-                $('#users').append(`<div id= "list" class="${id}">${name}'s shopping list</div`);
+                $('#users').append(`<div id= "list" class="${id}">${name}'s $hopping Li$t</div`);
                 $('#list').append(`<form id="pholder">
                 <textarea id = "myTextArea"
                         rows = "30"
@@ -124,7 +124,7 @@ function update(id, list){
                     $('#users').find('#list').remove();
                     $('#list').find("#update").remove();        
                     
-                    $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
+                    $('#users').append(`<div id= "list" class="${id}">${name} $hopping Li$t</div`);
                     $('#list').append(`<form id="pholder">
                     <textarea id = "myTextArea"
                     rows = "30"
