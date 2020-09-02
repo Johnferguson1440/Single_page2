@@ -27,6 +27,8 @@ Working with css was quite a challenge when trying to determine what properties
 could be used together and which ones cannot. Deployed the application using Heroku
 
 #Heroku Deployment Tutorial-https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true
+!!!!MAKE SURE YOU SAVE YOUR DOTENV  INFORMATION ON THE HEROKU SITE UNDER SETTINGS IN CONFIG VARS!!!!
+This makes it so your code can talk to your deployed database.
 
 #Modules used for this project:
 Express, body-parser, morgan, dotenv, and pg.
