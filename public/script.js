@@ -58,7 +58,7 @@ function getOne( name, pass){
                 for(var i =0; i<split.length; i++){       
             
             $('#tabody').append(`               
-                   <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value="${split[i]}"></td></tr>`);
+                   <tr id="${split[i]}"><th class="${split[i]}"><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value="${split[i]}"></td></tr>`);
                 }
             $('#list').append(`<input  type="button" class="update" value="SAVE LIST"></input></form>`);
             $('#list').append(`<input  type="button" class="add" value="ADD ROW"></input></form>`);
@@ -67,16 +67,19 @@ function getOne( name, pass){
 
 //update users list
 $(".body").on('click','.update', function(){   
-  
     let currentID= $('#list').attr("class");
     let list= [];
+
+    $("#rows input[type='checkbox']:checked").closest("tr").remove();
+  
     $('#users .listdata').each(function(){
+        
         list.push($(this).val());
         
     });  
     let strg= list.join();
-
-    update(currentID, strg);
+console.log(strg);
+    //update(currentID, strg);
 })
 
 function update(id, list){
@@ -106,7 +109,7 @@ function update(id, list){
             for(var i =0; i<split.length; i++){
 
             $('#tabody').append(`               
-                   <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value="${split[i]}"></td></tr>`);
+                   <tr id="${split[i]}"><th class="${split[i]}"><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value="${split[i]}"></td></tr>`);
 
         }
             $('#list').append(`<input  type="button" class="update" value="SAVE LIST"></input></form>`);
@@ -146,7 +149,7 @@ function update(id, list){
         
                     $('#users').append(`<div id= "list" class="${id}">${name}'s $hopping Li$t<table id="rows"  cellspacing="4" width="25%">
                     <thead>
-                       <tr><th><input type="checkbox" name="select_all" value="1" id="example-select-all"></th><th>ITEM</th></tr>                      
+                       <tr id= ${list}><th class="${list}"><input type="checkbox" name="select_all" value="1" id="example-select-all"></th><th>ITEM</th></tr>                      
                         </thead><tbody id="tabody"></tbody></table></div>`);
                         $('#tabody').append(`               
                         <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value=${list}></td></tr>`);
