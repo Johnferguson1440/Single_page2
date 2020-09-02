@@ -3,7 +3,7 @@ Shopping List
 Synopsis:
 
 This is a basic shopping list webpage that allows users to create
-a user or login, and utilize the form to input your list. t saves
+a user or login, and utilize the form to input your list. It saves
 your login information and your unique list and allows you to access
 whenever it is needed.
 
