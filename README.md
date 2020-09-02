@@ -23,7 +23,7 @@ Now anytime you need to update your list you simply use the login button
 and your list will appear.
 
 This was a fun project to work on and allowed me to incorporate Full Stack operation.
-Working with css was quite a challenge when trying to determin what properties 
+Working with css was quite a challenge when trying to determine what properties 
 could be used together and which ones cannot. Deployed the application using Heroku
 
 Heroku Deployment Tutorial-https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true
