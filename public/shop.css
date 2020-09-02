@@ -65,8 +65,8 @@ body,html{
     color: rgb(58, 214, 97);
 }
 .update{
-    background-color:rgb(212, 129, 20);
-    color:rgb(110, 241, 116);
+    background-color:darkorange;
+    color:black;
     width: 300px;
     height: 100px;
     font-size: 30px;
