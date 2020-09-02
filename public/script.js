@@ -20,7 +20,7 @@ function getAll(){
 $('#login').on('click',function(){
     let name= $('#exuser').val();
     let pass=$('#pass').val();
-  
+  console.log(name);
     getOne(name, pass)
     $('#exuser').val("");
     $('#pass').val("");
@@ -34,25 +34,34 @@ function getOne( name, pass){
         dataType: 'text',
         success: function(data){
             
-
+            
             var parsed=JSON.parse(data)
             let list = parsed[0].list;
-            let id =parsed[0].id;
+            let id =parsed[0].userid;
             
             if(typeof parsed === "string"){
                 alert(data);
             }else{            
             
             $('#users').find('#list').remove();
-            $('#list').find("#update").remove();
+            $('#list').find("#rows").remove();
+            $('#list').find(".update").remove();
+            $('#list').find(".add").remove();
 
-                $('#users').append(`<div id= "list" class="${id}">${name}'s $hopping Li$t</div`);
-                $('#list').append(`<form id="pholder">
-                <textarea id = "myTextArea"
-                        rows = "30"
-                        cols = "80">${list}</textarea>
-              
-                        <input  type="button" class="update" value="SAVE LIST"></input></form>`);
+            $('#users').append(`<div id= "list" class="${id}">${name}'s $hopping Li$t<table id="rows"  cellspacing="4" width="25%">
+            <thead>
+               <tr><th><input type="checkbox" name="select_all" value="1" id="example-select-all"></th><th>ITEM</th></tr>                      
+                </thead><tbody id="tabody"></tbody></table></div>`);  
+                JSON.stringify(list);
+                let split = list.split(",");
+                
+                for(var i =0; i<split.length; i++){       
+            
+            $('#tabody').append(`               
+                   <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value="${split[i]}"></td></tr>`);
+                }
+            $('#list').append(`<input  type="button" class="update" value="SAVE LIST"></input></form>`);
+            $('#list').append(`<input  type="button" class="add" value="ADD ROW"></input></form>`);
         }}        
     })}
 
@@ -60,13 +69,18 @@ function getOne( name, pass){
 $(".body").on('click','.update', function(){   
   
     let currentID= $('#list').attr("class");
-    
-    let list = $('#myTextArea').val();    
-    
-    update(currentID, list);
+    let list= [];
+    $('#users .listdata').each(function(){
+        list.push($(this).val());
+        
+    });  
+    let strg= list.join();
+
+    update(currentID, strg);
 })
 
 function update(id, list){
+    console.log(list);
     $.ajax({
         type: 'PATCH',
         url: '/api/shop/'+id,
@@ -80,15 +94,23 @@ function update(id, list){
             let id =parsed[0].userID;
             
             //$('#users').find('#list').remove();
-            $('#list').find("#pholder").remove();
+            $('#rows').find("#tabody").remove();
+            //$('#tabody').find(".listdata").remove();
+            $('#list').find(".update").remove();
+            $('#list').find(".add").remove();
             
-                //$('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
-                $('#list').append(`<form id="pholder">
-                <textarea id = "myTextArea"
-                        rows = "30"
-                        cols = "80">${list}</textarea>
-              
-                        <input  type="button" class="update" value="SAVE LIST"></input></form>`);
+           $('#rows').append(`<tbody id="tabody"></tbody>`);
+            JSON.stringify(list);
+            let split = list.split(",");
+            
+            for(var i =0; i<split.length; i++){
+
+            $('#tabody').append(`               
+                   <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value="${split[i]}"></td></tr>`);
+
+        }
+            $('#list').append(`<input  type="button" class="update" value="SAVE LIST"></input></form>`);
+            $('#list').append(`<input  type="button" class="add" value="ADD ROW"></input></form>`);
             alert("List Saved!")
             }        
     })}
@@ -111,29 +133,35 @@ function update(id, list){
             success: function(data){
                 var parsed =JSON.parse(data);               
                 var id = parsed[0].userid;
-               
-                if(parsed[0].list===null){
-                    var list = "Your list";
-                }else{
-                var list = parsed[0].list;
-            }
+                var list = "Your list";
+                
+            
                 if(typeof parsed === "string"){
                     alert(data);
                 }else{            
-                    
                     $('#users').find('#list').remove();
-                    $('#list').find("#update").remove();        
-                    
-                    $('#users').append(`<div id= "list" class="${id}">${name} $hopping Li$t</div`);
-                    $('#list').append(`<form id="pholder">
-                    <textarea id = "myTextArea"
-                    rows = "30"
-                    cols = "80">${list}</textarea>
-                    
-                    <input  type="button" class="update" value="SAVE LIST"></input></form>`);
-                
+                    $('#list').find("#rows").remove();
+                    $('#list').find(".update").remove();
+                    $('#list').find(".add").remove();
+        
+                    $('#users').append(`<div id= "list" class="${id}">${name}'s $hopping Li$t<table id="rows"  cellspacing="4" width="25%">
+                    <thead>
+                       <tr><th><input type="checkbox" name="select_all" value="1" id="example-select-all"></th><th>ITEM</th></tr>                      
+                        </thead><tbody id="tabody"></tbody></table></div>`);
+                        $('#tabody').append(`               
+                        <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value=${list}></td></tr>`);
+     
+             
+                 $('#list').append(`<input  type="button" class="update" value="SAVE LIST"></input></form>`);
+                 $('#list').append(`<input  type="button" class="add" value="ROW"></input></form>`);
             }}
         })
     }
+    //button event to add new row
+    $(".body").on('click','.add',function(){
+        $('#tabody').append(`               
+        <tr><th><input type="checkbox" name="row" class="row"></input></th><td><input type="text" class="listdata" value=""></td></tr>`);
+    })
 })
+
 

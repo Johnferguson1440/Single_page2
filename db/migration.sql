@@ -1,3 +1,6 @@
+DROP TABLE shop;
+DROP TABLE users;
+
 CREATE TABLE   users(
     ID serial PRIMARY KEY,
     name varchar(30),

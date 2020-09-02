@@ -94,7 +94,7 @@ app.post('/api/shop', (req, res)=>{
 app.patch('/api/shop/:id', (req, res)=>{
     var id= Number.parseInt(req.params.id);
     var list = req.body.list;
-    
+   console.log(list)
     db.query('UPDATE shop SET list=$1 WHERE userID=$2', [list, id], (err, data) =>{
         if(err){
             
