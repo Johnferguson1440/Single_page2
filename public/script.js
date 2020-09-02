@@ -20,7 +20,7 @@ function getAll(){
 $('#login').on('click',function(){
     let name= $('#exuser').val();
     let pass=$('#pass').val();
-  console.log(name);
+  
     getOne(name, pass)
     $('#exuser').val("");
     $('#pass').val("");
@@ -83,7 +83,7 @@ $(".body").on('click','.update', function(){
 })
 
 function update(id, list){
-    console.log(list);
+    
     $.ajax({
         type: 'PATCH',
         url: '/api/shop/'+id,
@@ -92,7 +92,7 @@ function update(id, list){
         dataType: "text",
         success: function(data){
             var parsed=JSON.parse(data)
-            console.log(parsed);
+            
             let list = parsed[0].list;
             let id =parsed[0].userID;
             
