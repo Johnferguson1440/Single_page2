@@ -1,4 +1,4 @@
-#Shopping List
+#Shopping List MVP
 
 #Synopsis:
 
