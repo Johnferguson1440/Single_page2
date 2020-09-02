@@ -46,7 +46,7 @@ function getOne( name, pass){
             $('#users').find('#list').remove();
             $('#list').find("#update").remove();
 
-                $('#users').append(`<div id= "list" class="${id}">${name} shopping list</div`);
+                $('#users').append(`<div id= "list" class="${id}">${name}'s shopping list</div`);
                 $('#list').append(`<form id="pholder">
                 <textarea id = "myTextArea"
                         rows = "30"
@@ -63,7 +63,7 @@ $(".body").on('click','.update', function(){
     
     let list = $('#myTextArea').val();    
     
-    update(currentID, list)
+    update(currentID, list);
 })
 
 function update(id, list){
@@ -75,9 +75,9 @@ function update(id, list){
         dataType: "text",
         success: function(data){
             var parsed=JSON.parse(data)
+            console.log(parsed);
             let list = parsed[0].list;
             let id =parsed[0].userID;
-            
             
             //$('#users').find('#list').remove();
             $('#list').find("#pholder").remove();
@@ -94,11 +94,11 @@ function update(id, list){
     })}
 
     $('#new').on('click', function(){
-        let name= $('#adduser').val();
-        let pass=$('#addpass').val();
+        let name= $('#exuser').val();
+        let pass=$('#pass').val();
         postUser(name, pass);
-        $('#adduser').val("");
-        $('#addpass').val("");
+        $('#exuser').val("");
+        $('#pass').val("");       
     })
 
     function postUser(name, pass){
@@ -110,7 +110,8 @@ function update(id, list){
             dataType: 'text',
             success: function(data){
                 var parsed =JSON.parse(data);               
-                var id = parsed[0].id;
+                var id = parsed[0].userid;
+               
                 if(parsed[0].list===null){
                     var list = "Your list";
                 }else{

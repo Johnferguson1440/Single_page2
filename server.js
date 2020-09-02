@@ -65,7 +65,7 @@ app.post('/api/shop', (req, res)=>{
                             console.log(err);
                         }else{
                             userid= data.rows[0].id;
-                            
+                                                        
                             db.query('INSERT INTO shop(list, userID) VALUES ($1,$2)', [req.body.list, userid], (err, data)=>{
                                 if(err){
                                     console.log(err);
@@ -95,15 +95,16 @@ app.patch('/api/shop/:id', (req, res)=>{
     var id= Number.parseInt(req.params.id);
     var list = req.body.list;
     
-    db.query('UPDATE shop SET list=$1 WHERE ID=$2', [list, id], (err, data) =>{
+    db.query('UPDATE shop SET list=$1 WHERE userID=$2', [list, id], (err, data) =>{
         if(err){
             
             console.log(err);
-        }else{
+        }else{            
             db.query('SELECT * FROM shop WHERE userID=$1', [id], (err, data)=>{
                 if(err){
                     console.log(err);
                 }else{
+                    console.log(id);
                     res.json(data.rows);
                 }
             })
