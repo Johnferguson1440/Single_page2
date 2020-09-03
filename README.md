@@ -15,9 +15,13 @@ whenever it is needed.
 
 3.Click the add user button.
 
-4.Form will appear with "Your list" typed in. Change text to your items.
+4.Input boxes will appear with "Your list" typed in. Change text to your items.
 
-5.Click update list at the bottom of the list.
+5.To add another row click the button add row.
+
+6.If you check the box next to the item when you save the list it will delete the checked items and only keep the unchecked rows.
+
+7.Click update list at the bottom of the list.
 
 Now anytime you need to update your list you simply use the login button 
 and your list will appear.
